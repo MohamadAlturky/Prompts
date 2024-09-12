@@ -8,11 +8,9 @@ I'll provide you with instructions on how to generate a filter class for retriev
    - Use nullable types (e.g., `int?`, `string?`) to allow optional filtering.
    - Include properties for ID and any other fields you want to filter by.
 
-3. Add a `Count` property of type `int?` to allow limiting the number of results.
-
-4. Include a `PaginatedRequest` property (if pagination is needed):
+3. Include a `PaginatedRequest` property (always pagination is needed):
    ```csharp
-   public PaginatedRequest? PaginatedRequest { get; set; }
+   public PaginatedRequest PaginatedRequest { get; set; }
    ```
    This are the pagination classes
    ```csharp
@@ -28,18 +26,13 @@ I'll provide you with instructions on how to generate a filter class for retriev
    }
    ```
 
-5. For each property that represents a relationship (navigation property), add a boolean property to indicate whether to include related entities:
-   ```csharp
-   public bool Include[RelationshipName] { get; set; } = false;
-   ```
-
-6. Add ordering options for relevant properties:
+5. Add ordering options for relevant properties:
    ```csharp
    public bool OrderBy[PropertyName]Descending { get; set; } = false;
    public bool OrderBy[PropertyName]Ascending { get; set; } = false;
    ```
 
-7. For enum properties or properties representing foreign keys, add a nullable property of the same type to allow filtering:
+6. For enum properties or properties representing foreign keys, add a nullable property of the same type to allow filtering:
    ```csharp
    public [EnumType]? [PropertyName] { get; set; }
    ```
@@ -59,9 +52,8 @@ public class ProjectFilter
     public string? Description { get; set; }
     public int? ProjectType { get; set; }
 
-    // Pagination and count
-    public int? Count { get; set; }
-    public PaginatedRequest? PaginatedRequest { get; set; }
+    // Pagination 
+    public PaginatedRequest PaginatedRequest { get; set; }
 
     // Ordering
     public bool OrderByIdDescending { get; set; } = false;
@@ -71,15 +63,9 @@ public class ProjectFilter
     public bool OrderByProjectTypeDescending { get; set; } = false;
     public bool OrderByProjectTypeAscending { get; set; } = false;
 
-    // Include related entities
-    public bool IncludeActivities { get; set; } = false;
-    public bool IncludeContributionMembers { get; set; } = false;
-    public bool IncludeInvitations { get; set; } = false;
-    public bool IncludeTasks { get; set; } = false;
-    public bool IncludeProjectType { get; set; } = false;
-
     // Additional filters (examples)
     public DateTime? CreatedAfter { get; set; }
+    public DateTime? DateEquals { get; set; }
     public DateTime? CreatedBefore { get; set; }
     public string? NameContains { get; set; }
 }
