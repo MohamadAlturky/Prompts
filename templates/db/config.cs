@@ -1,0 +1,1 @@
+services.AddSingleton<IDbConnectionFactory, DbConnectionFactory>();
