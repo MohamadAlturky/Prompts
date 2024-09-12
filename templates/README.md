@@ -1,5 +1,10 @@
 # This Tempalte Contains
 
-## DB Connection Method
+## DB Connection ✅
 
 ## Pagination ✅
+
+## Write Repo
+
+## Read Repo
+
