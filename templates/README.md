@@ -2,4 +2,4 @@
 
 ## DB Connection Method
 
-## Pagination
+## Pagination ✅
